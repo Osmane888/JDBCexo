@@ -1,0 +1,23 @@
+package org.example;
+import org.example.Repositories.Impls.JeuxRepositoryImpl;
+import org.example.Repositories.JeuxRepository;
+
+import javax.xml.transform.Result;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+
+        JeuxRepository jeuxRepository = new JeuxRepositoryImpl();
+
+        jeuxRepository.findAll();
+    }
+}
