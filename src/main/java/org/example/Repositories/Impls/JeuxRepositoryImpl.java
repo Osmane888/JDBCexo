@@ -54,7 +54,7 @@ public class JeuxRepositoryImpl implements JeuxRepository {
     public Jeux findById(int id) {
         try {
             Connection con = openConnection();
-            PreparedStatement stmt = con.prepareStatement("select * " + "from Jeux " + "where id = ?");
+            PreparedStatement stmt = con.prepareStatement("select * " + "from Jeux " + "where id =?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
@@ -91,6 +91,7 @@ public class JeuxRepositoryImpl implements JeuxRepository {
             stmt.setDate(5,Date.valueOf(jeu.getDate()));
 
             stmt.executeUpdate();
+            con.close();
 
             return true;
 
@@ -98,7 +99,37 @@ public class JeuxRepositoryImpl implements JeuxRepository {
             System.out.println("Error: " + e.getMessage());
             return false;
         }
-
-
     }
+
+    public boolean updateJeux(int id, Jeux jeu){
+        try {
+            Connection con = openConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                    "update jeux " +
+                            "set titre=?," +
+                            "genre=?,"+
+                            "multijoueur=?,"+
+                            "prix=?,"+
+                            "date_sortie=?"+
+                            "where id=?"
+            );
+
+            stmt.setString(1,jeu.getTitre());
+            stmt.setString(2,jeu.getGenre());
+            stmt.setBoolean(3,jeu.isMultijoueur());
+            stmt.setDouble(4,jeu.getPrix());
+            stmt.setDate(5,Date.valueOf(jeu.getDate()));
+
+            stmt.executeUpdate();
+            con.close();
+            return true;
+        }catch (SQLException e){
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public void deleteJeux(int id){
+        System.out.println("");
+    };
 }

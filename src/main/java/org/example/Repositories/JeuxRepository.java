@@ -8,6 +8,6 @@ public interface JeuxRepository {
     List<Jeux> findAll();
     Jeux findById (int id);
     boolean addJeux(Jeux jeu);
-    boolean updateJeux(int id);
+    boolean updateJeux(int id, Jeux jeu);
     void deleteJeux(int id);
 }
