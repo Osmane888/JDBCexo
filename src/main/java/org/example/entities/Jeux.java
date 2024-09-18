@@ -1,7 +1,6 @@
 package org.example.entities;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Jeux {
     private int id;
@@ -86,7 +85,7 @@ public class Jeux {
                 "id='" + id + '\'' +
                 ", titre='" + titre + '\'' +
                 ", genre='" + genre + '\'' +
-                ", multijoueur ?=" + multijoueur +
+                ", multijoueur='" + multijoueur + '\''+
                 ", prix=" + prix +
                 ", date de sortie=" + date +
                 '}';

@@ -19,9 +19,11 @@ public class Main {
     public static void main(String[] args) {
 
         JeuxRepository jeuxRepository = new JeuxRepositoryImpl();
+        jeuxRepository.findAll();
 
-        Jeux jeu = new Jeux("Assassin's Creed","open-world", true, 69.99, LocalDate.of(2020, 12, 20));
-        jeuxRepository.addJeux(jeu);
+        Jeux jeu = new Jeux("Assassin's Creed", "Action/Open-World",true,35.5,LocalDate.of(2020,10,28));
+        jeuxRepository.updateJeux(6,jeu);
+
         jeuxRepository.findAll();
     }
 }

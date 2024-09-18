@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 
 public class BookRepositoryImpl implements BookRepository {
 
-        private static final String _connectionString = "jdbc:postgresql://localhost:5432/demo_jdbc";
+        private static final String _connectionString = "jdbc:postgresql://localhost:5432/book";
         private static final String _username = "postgres";
         private static final String _password = "1234";
 

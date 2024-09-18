@@ -64,6 +64,7 @@ public class JeuxRepositoryImpl implements JeuxRepository {
 
             Jeux jeu = mapJeux(rs);
             con.close();
+            System.out.println(jeu);
             return jeu;
 
         } catch (SQLException e) {
@@ -79,9 +80,9 @@ public class JeuxRepositoryImpl implements JeuxRepository {
                     "insert into jeux(" +
                             "titre, " +
                             "genre, " +
-                            "multjoueur, " +
+                            "multijoueur, " +
                             "prix, " +
-                            "date_sortie, )" +
+                            "date_sortie )" +
                             "VALUES(?,?,?,?,?)"
             );
             stmt.setString(1, jeu.getTitre());
@@ -105,12 +106,12 @@ public class JeuxRepositoryImpl implements JeuxRepository {
         try {
             Connection con = openConnection();
             PreparedStatement stmt = con.prepareStatement(
-                    "update jeux " +
+                    "UPDATE jeux " +
                             "set titre=?," +
                             "genre=?,"+
                             "multijoueur=?,"+
                             "prix=?,"+
-                            "date_sortie=?"+
+                            "date_sortie=? "+
                             "where id=?"
             );
 
@@ -119,6 +120,7 @@ public class JeuxRepositoryImpl implements JeuxRepository {
             stmt.setBoolean(3,jeu.isMultijoueur());
             stmt.setDouble(4,jeu.getPrix());
             stmt.setDate(5,Date.valueOf(jeu.getDate()));
+            stmt.setInt(6, id);
 
             stmt.executeUpdate();
             con.close();
