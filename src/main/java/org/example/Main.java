@@ -20,10 +20,5 @@ public class Main {
 
         JeuxRepository jeuxRepository = new JeuxRepositoryImpl();
         jeuxRepository.findAll();
-
-        Jeux jeu = new Jeux("Assassin's Creed", "Action/Open-World",true,35.5,LocalDate.of(2020,10,28));
-        jeuxRepository.updateJeux(6,jeu);
-
-        jeuxRepository.findAll();
     }
 }
